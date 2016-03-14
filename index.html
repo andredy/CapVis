@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+
+    <!--
+        Personalice la directiva de seguridad de contenido en la etiqueta meta como sea necesario. Agregue "unsafe-inline" a default-src para permitir JavaScript insertado.
+        Para obtener más detalles, consulte http://go.microsoft.com/fwlink/?LinkID=617521
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+    <title>MiPrimeraApp</title>
+
+    <!-- Referencias de MiPrimeraApp -->
+    <link href="css/index.css" rel="stylesheet" />
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+    <script type="text/javascript">
+var destinationType;
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+     $("#btnCamara").tap(function pulsacion(){
+    
+    navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+    destinationType: Camera.DestinationType.FILE_URI });
+
+    function onSuccess(imageURI) {
+    var image = document.getElementById("myImage");//Seleccionar control con javascript
+    image.src = imageURI;
+    }
+
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }            
+   });
+}
+</script>
+</head>
+
+<body >
+    <div data-role="page" id="principal" style=" background-color:#FF0000;background:url(images/fondo.png);" >
+	<div data-role="header" >
+                
+	</div>
+	<div data-role="content">
+
+        <div class="form-group">
+        <div class="col-lg-10 col-lg-offset-2">
+            <center>
+                <br />
+            <br />
+            <div>
+               
+               
+               <button  style="width:180px; height:95px;background-color:#FF0000;background:url(images/camara2.png);" type="button" class="btn btn-default" id="btnCamara" ></button>
+                <input type="file" style="width:180px; height:95px;background-color:#FF0000;background:url(images/camara2.png);" accept="image/*" capture="camera">
+
+           </div>
+            
+            <br />
+                 <br />
+            <br />
+            <br />
+            
+           
+            <div>
+                <button style="width:180px; height:95px;background-color:#FF0000;background:url(images/galeria2.jpg);" type="button" class="btn btn-default" id="btnGaleria" ></button>
+            
+            </div> 
+             </center>
+        </div>
+    </div>
+		
+  	</div>
+	<div data-role="footer" >
+        <br />
+        <center>
+            
+     	 <label style="width:215px; height:215px;background:url(images/logo.png);" id="logo1" ></label>
+        </center>
+            
+	</div>
+</div>
+    
+   
+    
+   
+        
+   
+    
+    <!-- Referencia de Cordova que se agrega a la aplicación cuando se compila. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+    <script src="scripts/index.js"></script>
+</body>
+</html>
